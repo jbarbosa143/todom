@@ -47,13 +47,13 @@ const printTodo = function(obj) {
   list.appendChild(childLi)
 }
 // A function that print ALL todos. It should loop through our todos array and call the above print-one-todo function on each one.
-function printAllToDos (obj){
+function printAllTodos (obj){
   for (obj of todos){
     printTodo(obj)
   }
 }
 // Now here in the global code, call the above function, so our todos array gets printed out on page load (which is when global code is run). This is the only time we're calling a function ourselves; the rest is event listeners and helper functions that run when the user interacts with the DOM!
-printAllToDos()
+printAllTodos()
 
 
 // A function that clears all todos from the DOM. This is a great helper function for refreshing our todos.
@@ -67,9 +67,9 @@ function clearAll (){
 
 
 // A function that refreshes our page by calling each of the two above functions. Since printing all todos onto the DOM is based on our todos array, if we make a change to our todos array, we can simply call this function, which will make our DOM match our todos array by simply clearing the page and repopulating it according to our todos' new state.
-const refreshToDos = function(){
+const refreshTodos = function(){
   clearAll();
-  printAllToDos();
+  printAllTodos();
 }
 
 
@@ -85,15 +85,15 @@ Let's wire it all together. Add an event listener for the add todo button that w
 const addButton = document.querySelector('.add-todo');
 addButton.addEventListener ("click", function (){
   let textBox = document.querySelector(".todo-input")
-  let newTodO =  {
+  let newTodo =  {
     text: textBox.value,
     complete: false,
     priority: 2,
     id: todos.length,
   };
 
-  addAnObject(newTodO);
-  printTodo(newTodO);
+  addAnObject(newTodo);
+  printTodo(newTodo);
 })
 
 
@@ -104,7 +104,7 @@ Run over to the HTML and add a button for CLEAR TODOS or REMOVE TODOS or some su
 const clearButton = document.querySelector(".clear-todo");
 clearButton.addEventListener("click", function(){
   todos.splice(0, todos.length);
-  refreshToDos();
+  refreshTodos();
 })
 
 // And you're DONE with the best interface we've written yet for a todos app!
